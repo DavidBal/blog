@@ -1,0 +1,9 @@
+<template name="editor">
+  <div><textarea id="title" rows="1" cols="80">{{title}}</textarea></div>
+  <div><textarea id="text" rows="8" cols="80">{{textformater text}}</textarea></div>
+  {{#if _id}}
+    <button id="{{_id}}" class="edit">editieren</button>
+  {{else}}
+    <button class="save">Speichern</button>
+  {{/if}}
+</template>

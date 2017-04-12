@@ -1,0 +1,31 @@
+<body>
+
+</body>
+
+<template name="Loading">
+  Loading...
+</template>
+
+<template name="containerMain">
+  <div class="containerMain">
+    <div><h1>HEADER</h1></div>
+
+    <div class="Menue">MENU MENU MENU</div>
+
+    <content>
+      {{> yield "content"}}
+    </content>
+
+    <footer>
+      {{> yield "footer"}}
+    </footer>
+  </div>
+</template>
+
+<template name="textPrevLoader">
+  <div class="text_prev_container">
+    {{#each post in loadPosts}}
+      {{>postPrev post}}
+    {{/each}}
+  </div>
+</template>

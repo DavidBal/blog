@@ -1,0 +1,81 @@
+/* CSS declarations go here
+  Autor: David B.
+*/
+
+body{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  font-size: 16px;
+}
+
+button{
+  display: inline-block;
+  background: white;
+  background-color: #0066ff;
+  min-width: 190px;
+  border-radius: 5px;
+  border: thin solid #888;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 19px;
+  color: black;
+}
+button:hover{
+  cursor: pointer;
+  color: white;
+}
+
+.containerMain{
+  display: block;
+  height: 100%;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.postPrev{
+  width: 800px;
+  height: auto;
+  margin: 5px;
+  border: solid rgba(0,0,0,0.6) 4px;
+  padding: 4px;
+}
+
+.postPrev:hover{
+  background-color: rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.postPrev_Header{
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+  color: red;
+}
+
+.postPrev_Date{
+  font-size: 10px;
+  text-align: right;
+}
+
+
+
+.post{
+  width: 800px;
+  margin-bottom: 20px;
+}
+
+.go_Back{
+}
