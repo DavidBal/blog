@@ -12,6 +12,10 @@
 
     <div class="Menue">MENU MENU MENU</div>
 
+    <highlights>
+      {{> yield "highlights"}}
+    </highlights>
+
     <content>
       {{> yield "content"}}
     </content>
@@ -19,6 +23,9 @@
     <footer>
       {{> yield "footer"}}
     </footer>
+
+    {{> loginButtons}}
+
   </div>
 </template>
 
@@ -28,4 +35,19 @@
       {{>postPrev post}}
     {{/each}}
   </div>
+  {{#if isInRole 'admin'}}
+    <button class="create_Post">Neues Post erstellen</button>
+  {{/if}}
+</template>
+
+<template name="404">
+ <div class="containerMain" style="display: flex; text-align: center; align-items: center;">There is no Site here!!</div>
+</template>
+
+<template name="signIn">
+  
+</template>
+
+<template name="NoAcess">
+  <div class="containerMain" style="display: flex; text-align: center; align-items: center;">No Acess!!</div>
 </template>

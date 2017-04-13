@@ -6,12 +6,8 @@ body{
   display: flex;
   align-items: center;
   height: 100%;
-  position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
   font-size: 16px;
+  padding-bottom: 20px;
 }
 
 button{
@@ -28,21 +24,38 @@ button{
   font-weight: bold;
   font-size: 19px;
   color: black;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 button:hover{
   cursor: pointer;
   color: white;
 }
 
+textarea{
+  font-size: 16px;
+}
+
 .containerMain{
   display: block;
-  height: 100%;
   padding-left: 1.875rem;
   padding-right: 1.875rem;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.1);
+  padding-bottom: 10px;
+}
+
+.center{
+  height: 200px;
+  width: 400px;
+  background: rgba(0,0,0,0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -200px;
 }
 
 .postPrev{
@@ -70,12 +83,64 @@ button:hover{
   text-align: right;
 }
 
-
-
 .post{
   width: 800px;
   margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.image_holder{
+  width: 800px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.post_Header{
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 10px;
+}
+
+.post_Text{
+  min-height: 400px;
+}
+
+.post_Date{
+  font-size: 15px;
+  text-align: right;
 }
 
 .go_Back{
+}
+
+.highlightContainer{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.login_table{
+  margin-left: 50px;
+}
+
+.login_table_head{
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.Login{
+  border: 1px solid #cccccc;
+  background: white;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: -8px -12px 0 -12px;
+  width: 250px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  color: #333;
+  position: relative;
+  line-height: 1;
 }

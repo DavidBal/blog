@@ -12,6 +12,27 @@ import './routing.js';
 import './template/editor.html';
 import './template/artikel.html';
 
+let slideIndex = 1;
+
+function showDivs(n) {
+  let i;
+  const x = document.getElementsByClassName('highlight');
+  if (n > x.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = x.length;
+  }
+  for (i = 0; i < x.length; i += 1) {
+    x[i].style.display = 'none';
+  }
+  x[slideIndex - 1].style.display = 'block';
+}
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
 if (Meteor.isClient) {
   // Template helper
   Template.textPrevLoader.helpers({
@@ -37,6 +58,12 @@ if (Meteor.isClient) {
     },
   });
 
+  Template.containerMain.events({
+    'click .create_Post': function onClick() {
+      Router.go('/editor/');
+    },
+  });
+
   Template.postPrev.events({
     'click .postPrev': function onClick(event) {
       Router.go(`/artikel/${event.currentTarget.id}`);
@@ -46,6 +73,9 @@ if (Meteor.isClient) {
   Template.goBack.events({
     'click .go_Back': function onClick() {
       Router.go('/');
+    },
+    'click .open_Editor': function onClick(event) {
+      Router.go(`/editor/${event.currentTarget.id}`);
     },
   });
 
@@ -60,13 +90,30 @@ if (Meteor.isClient) {
     'click .edit': function onClick(event) {
       const title = $('#title').val();
       let text = $('#text').val();
+      const image = $('#image_link').val();
       text = text.replace(/\r\n/g, '<br/>');
       text = text.replace(/\n/g, '<br/>');
       text = text.replace(/\n/g, '<br/>');
       const id = event.currentTarget.id;
       const date = new Date().toISOString();
-      PostCollection.update(id, { title, text, date });
+      PostCollection.update(id, { title, text, date, image });
       Router.go(`/artikel/${id}`);
+    },
+    'click .delete': function onClick(event) {
+      const answer = confirm('Wollen Sie den Artikel wircklich loeschen??');
+      if (answer) {
+        PostCollection.remove(event.currentTarget.id);
+        Router.go('/');
+      }
+    },
+  });
+
+  Template.highlightUi.events({
+    'click .next': function onClick() {
+      plusDivs(+1);
+    },
+    'click .before': function onClick() {
+      plusDivs(-1);
     },
   });
 }

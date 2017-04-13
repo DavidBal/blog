@@ -2,10 +2,23 @@
   <div class="post" id="{{_id}}">
     <div class="post_Header">{{title}}</div>
     <div class="post_Text">{{{text}}}</div>
-    <div class="date">{{date}}</div>
+    <div class="post_Date">{{date}}</div>
+    <div class="post_Proposals">//TODO Create Post Proposals</div>
   </div>
 </template>
 
 <template name="goBack">
   <button class="go_Back"> Zurück </button>
+  {{#if isInRole 'admin'}}
+    <button id={{_id}} class="open_Editor"> editieren </button>
+  {{/if}}
+</template>
+
+
+
+<template name="image">
+  {{#if image}}
+    <div class="image_holder" style="background-image: url({{image}})">
+    </div>
+  {{/if}}
 </template>

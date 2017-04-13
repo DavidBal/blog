@@ -1,8 +1,9 @@
 <template name="editor">
-  <div><textarea id="title" rows="1" cols="80">{{title}}</textarea></div>
-  <div><textarea id="text" rows="8" cols="80">{{textformater text}}</textarea></div>
+  <div>Titel:<br/><textarea id="title" rows="1" cols="80">{{title}}</textarea></div>
+  <div>Img-Link:<br/><textarea id="image_link" rows="1" cols="80">{{image}}</textarea></div>
+  <div>Text:<br/><textarea id="text" rows="20" cols="160">{{textformater text}}</textarea></div>
   {{#if _id}}
-    <button id="{{_id}}" class="edit">editieren</button>
+    <button id="{{_id}}" class="edit">editieren</button><button id="{{_id}}" class="delete">Löschen</button>
   {{else}}
     <button class="save">Speichern</button>
   {{/if}}
