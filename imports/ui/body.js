@@ -5,12 +5,14 @@ import { $ } from 'meteor/jquery';
 
 import { PostCollection } from '../api/database.js';
 
+import './routing.js';
 
 import './body.html';
 import './template/post_prev.html';
-import './routing.js';
 import './template/editor.html';
 import './template/artikel.html';
+import './template/signInUp.html';
+
 
 let slideIndex = 1;
 
@@ -114,6 +116,12 @@ if (Meteor.isClient) {
     },
     'click .before': function onClick() {
       plusDivs(-1);
+    },
+  });
+
+  Template.signIn.events({
+    'click .login-button': function onClick() {
+      Meteor.loginWithPassword($('#login-eMail-input').val(), $('#login-Password-input').val());
     },
   });
 }

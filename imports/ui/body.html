@@ -24,8 +24,7 @@
       {{> yield "footer"}}
     </footer>
 
-    {{> loginButtons}}
-
+    {{> down}}
   </div>
 </template>
 
@@ -44,10 +43,14 @@
  <div class="containerMain" style="display: flex; text-align: center; align-items: center;">There is no Site here!!</div>
 </template>
 
-<template name="signIn">
-  
-</template>
-
 <template name="NoAcess">
   <div class="containerMain" style="display: flex; text-align: center; align-items: center;">No Acess!!</div>
+</template>
+
+<template name="down">
+  <div class="foot">
+    <span class="toot-table"><a href="https://github.com/DavidBal/blog"><img src="/GitHub-Mark-32px.png"></a></span>
+    <span class="toot-table"><a href="/impressum">Impressum</a></span>
+    <span class="toot-table">{{> loginButtons}}</span>
+  </div>
 </template>
