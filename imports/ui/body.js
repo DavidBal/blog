@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 import { Router } from 'meteor/iron:router';
+import { Accounts } from 'meteor/accounts-base';
 import { $ } from 'meteor/jquery';
 
 import { PostCollection } from '../api/database.js';
@@ -13,6 +14,7 @@ import './template/post_prev.html';
 import './template/editor.html';
 import './template/artikel.html';
 import './template/signInUp.html';
+import './template/tag.html';
 
 
 let slideIndex = 1;
@@ -50,6 +52,17 @@ if (Meteor.isClient) {
       textprev = textprev.replace(new RegExp('<br/>', 'g'), '');
       return `${textprev.slice(0, 500)}...`;
     },
+    dateHelper() {
+      const date = new Date(this.date);
+      return `${date.toLocaleDateString()}(${date.toLocaleTimeString()})`;
+    },
+  });
+
+  Template.artikel.helpers({
+    dateHelper() {
+      const date = new Date(this.date);
+      return `${date.toLocaleDateString()}(${date.toLocaleTimeString()})`;
+    },
   });
 
   Template.containerMain.events({
@@ -85,6 +98,34 @@ if (Meteor.isClient) {
   Template.signIn.events({
     'click .login-button': function onClick() {
       Meteor.loginWithPassword($('#login-eMail-input').val(), $('#login-Password-input').val());
+    },
+  });
+
+  Template.login.helpers({
+    currentUserEmail() {
+      return Meteor.user().emails[0].address;
+    },
+  });
+
+  Template.login.events({
+    'click .logout-button': function onClick() {
+      Meteor.logout();
+    },
+    'click .changePassword-show': function onClick() {
+      if ($('#changePassword-dropdown').css('display') === 'none') {
+        $('#changePassword-dropdown').css({ display: 'inline' });
+      } else {
+        $('#changePassword-dropdown').css({ display: 'none' });
+      }
+    },
+    'click .changePassword-button': function onClick() {
+      Accounts.changePassword($('#oldPassword').val(), $('#newPassword').val(), function (error) {
+        if (typeof error === 'undefined') {
+          $('#changePassword-error').html('Done');
+        } else {
+          $('#changePassword-error').html(error.message);
+        }
+      });
     },
   });
 }

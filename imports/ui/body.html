@@ -8,9 +8,9 @@
 
 <template name="containerMain">
   <div class="containerMain">
-    <div><h1>HEADER</h1></div>
+    <div class="website-title">Das ist ein Blog</div>
 
-    <div class="Menue">MENU MENU MENU</div>
+    {{> menu}}
 
     <highlights>
       {{> yield "highlights"}}
@@ -32,6 +32,7 @@
   <div class="text_prev_container">
     {{#each post in loadPosts}}
       {{>postPrev post}}
+      <hr />
     {{/each}}
   </div>
   {{#if isInRole 'admin'}}
@@ -40,11 +41,19 @@
 </template>
 
 <template name="404">
- <div class="containerMain" style="display: flex; text-align: center; align-items: center;">There is no Site here!!</div>
+ <div class="center whiteBox">There is no Site here!!</div>
 </template>
 
 <template name="NoAcess">
-  <div class="containerMain" style="display: flex; text-align: center; align-items: center;">No Acess!!</div>
+  <div class="center whiteBox" >No Acess!!</div>
+</template>
+
+<template name="menu">
+  <div class="MenueContainer">
+    <div class="MenuePoint">TEXT</div>
+    <div class="MenuePoint">TEXT</div>
+    <div class="MenuePoint">TEXT</div>
+  </div>
 </template>
 
 <template name="down">
@@ -53,7 +62,6 @@
     <span class="toot-table"><a href="https://www.twitter.com"><img src="/Twitter_Logo_White_On_Blue.png" alt="Twitter Logo"></a></span>
     <br/>
     <span class="toot-table"><a href="/impressum">Impressum</a></span>
-    <span class="toot-table">{{> loginButtons}}</span>
     <br/>
     <span class="toot-table"><a href="https://github.com/DavidBal/blog"><img src="/GitHub-Mark-32px.png"></a></span>
   </div>

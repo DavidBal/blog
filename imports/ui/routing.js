@@ -98,7 +98,17 @@ if (Meteor.isClient) {
       this.render('', { to: 'footer' });
     },
   });
+
+  Router.route('/login', {
+    waitOn() {
+      return databaseSubscribe();
+    },
+    action() {
+      this.render('login');
+    },
+  });
 }
+
 
 Router.plugin('dataNotFound', { notFoundTemplate: 'notFound' });
 Router.configure({ notFoundTemplate: '404' });

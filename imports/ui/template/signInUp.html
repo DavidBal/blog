@@ -1,5 +1,5 @@
 <template name="signIn">
-  <div class="Login center">
+  <div class="Login whiteBox center">
     Login
     <div id="E-Mail">
       <label id="login-eMail-label" for="login-eMail-input">E-Mail</label>
@@ -9,6 +9,33 @@
       <label id="login-Password-label" for="login-Password-input">Passwort</label>
       <input id="login-Password-input" type="password">
     </div>
-    <button class="login-button">Login</button>
+    <button class="login-button">Login</button><br/>
+  </div>
+</template>
+
+<template name="login">
+  <div class="whiteBox center">
+    {{#if currentUser}}
+      <div>{{currentUserEmail}}</div>
+      <button class="logout-button">Logout</button><br/>
+      <hr/>
+      <a href="/">Home</a> <br/>
+      <a href="/editor"> editor </a>
+      <hr/>
+      <div class="changePassword">
+        <div class="changePassword-show">Change Password:</div>
+        <div id="changePassword-dropdown" style="display: none">
+
+          <label for="oldPassword">oldPassword</label>
+          <input id="oldPassword" type="password"> <br/>
+          <label for="newPassword">newPassword</label>
+          <input id="newPassword" type="password"><br/>
+          <button class="changePassword-button">Change</button><br/>
+          <div id="changePassword-error"></div>
+        </div>
+      </div>
+    {{else}}
+      {{> signIn}}
+    {{/if}}
   </div>
 </template>

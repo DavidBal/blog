@@ -1,8 +1,14 @@
 <template name="postPrev">
     <div class="postPrev" id="{{_id}}">
+      1111
       <div class="postPrev_Header">{{title}}</div>
       <div class="postPrev_Text">{{textshorter}}</div>
-      <div class="postPrev_Date">{{date}}</div>
+      <div class="postPrev_Date">{{dateHelper}}</div>
+      <div class="postPrev_Tags">
+        {{#each tag in tags}}
+          {{> Tag tag}}
+        {{/each}}
+      </div>
     </div>
 </template>
 
