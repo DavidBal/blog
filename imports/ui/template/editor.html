@@ -4,6 +4,8 @@
   <div>Text:<br/><textarea id="text" rows="20" cols="160">{{textformater text}}</textarea></div>
   {{#if _id}}
     <button id="{{_id}}" class="edit">editieren</button><button id="{{_id}}" class="delete">Löschen</button>
+    <label for="changeDate">Change Date</label>
+    <input type="checkbox" id="changeDate" value="true">
   {{else}}
     <button class="save">Speichern</button>
   {{/if}}

@@ -6,6 +6,7 @@ import { $ } from 'meteor/jquery';
 import { PostCollection } from '../api/database.js';
 
 import './routing.js';
+import './template/editor.js';
 
 import './body.html';
 import './template/post_prev.html';
@@ -51,15 +52,6 @@ if (Meteor.isClient) {
     },
   });
 
-  Template.editor.helpers({
-    textformater(text) {
-      if (text === null) {
-        return '';
-      }
-      return text.replace(new RegExp('<br/>', 'g'), '\n');
-    },
-  });
-
   Template.containerMain.events({
     'click .create_Post': function onClick() {
       Router.go('/editor/');
@@ -78,35 +70,6 @@ if (Meteor.isClient) {
     },
     'click .open_Editor': function onClick(event) {
       Router.go(`/editor/${event.currentTarget.id}`);
-    },
-  });
-
-  Template.editor.events({
-    'click .save': function onClick() {
-      const title = $('#title').val();
-      const text = $('#text').val();
-      const date = new Date().toISOString();
-      const id = PostCollection.insert({ title, text, date });
-      Router.go(`/artikel/${id}`);
-    },
-    'click .edit': function onClick(event) {
-      const title = $('#title').val();
-      let text = $('#text').val();
-      const image = $('#image_link').val();
-      text = text.replace(/\r\n/g, '<br/>');
-      text = text.replace(/\n/g, '<br/>');
-      text = text.replace(/\n/g, '<br/>');
-      const id = event.currentTarget.id;
-      const date = new Date().toISOString();
-      PostCollection.update(id, { title, text, date, image });
-      Router.go(`/artikel/${id}`);
-    },
-    'click .delete': function onClick(event) {
-      const answer = confirm('Wollen Sie den Artikel wircklich loeschen??');
-      if (answer) {
-        PostCollection.remove(event.currentTarget.id);
-        Router.go('/');
-      }
     },
   });
 

@@ -5,6 +5,10 @@ import { Roles } from 'meteor/alanning:roles';
 
 import { PostCollection } from '../api/database.js';
 
+function databaseSubscribe() {
+  return Meteor.subscribe('postCollection') && Meteor.subscribe('tagCollection');
+}
+
 const filters = {
   authenticate () {
     let user;
@@ -23,8 +27,6 @@ const filters = {
         this.render('NoAcess');
         return;
       }
-
-      console.log('[authenticate filter] done');
       this.next();
     }
   },
@@ -35,7 +37,7 @@ if (Meteor.isClient) {
     loadingTemplate: 'Loading',
 
     waitOn() {
-      return Meteor.subscribe('postCollection');
+      return databaseSubscribe();
     },
 
     action() {
@@ -50,7 +52,7 @@ if (Meteor.isClient) {
     loadingTemplate: 'Loading',
 
     waitOn() {
-      return Meteor.subscribe('postCollection');
+      return databaseSubscribe();
     },
 
     action() {
@@ -68,7 +70,7 @@ if (Meteor.isClient) {
     before: filters.authenticate,
 
     waitOn() {
-      return Meteor.subscribe('postCollection');
+      return databaseSubscribe();
     },
 
     action() {
@@ -85,7 +87,7 @@ if (Meteor.isClient) {
     before: filters.authenticate,
 
     waitOn() {
-      return Meteor.subscribe('postCollection');
+      return databaseSubscribe();
     },
 
     action() {
