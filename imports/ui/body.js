@@ -72,9 +72,6 @@ if (Meteor.isClient) {
   });
 
   Template.postPrev.events({
-    'click .postPrev': function onClick(event) {
-      Router.go(`/artikel/${event.currentTarget.id}`);
-    },
   });
 
   Template.goBack.events({

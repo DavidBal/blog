@@ -1,7 +1,7 @@
 <template name="postPrev">
-    <div class="postPrev" id="{{_id}}">
-      1111
-      <div class="postPrev_Header">{{title}}</div>
+  <a class="afree" href="/artikel/{{_id}}">
+    <div class="postPrev" id="{{_id}}" title="Oeffne artikel" >
+      <div class="postPrev_Header"><div class="postPrev_HeaderContent">{{title}}</div></div>
       <div class="postPrev_Text">{{textshorter}}</div>
       <div class="postPrev_Date">{{dateHelper}}</div>
       <div class="postPrev_Tags">
@@ -10,6 +10,7 @@
         {{/each}}
       </div>
     </div>
+  </a>
 </template>
 
 <template name="highlightUi">

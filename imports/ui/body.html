@@ -29,11 +29,17 @@
 </template>
 
 <template name="textPrevLoader">
-  <div class="text_prev_container">
-    {{#each post in loadPosts}}
-      {{>postPrev post}}
-      <hr />
-    {{/each}}
+  <div class="underTitel">
+    <div class="underTitelContent">News</div>
+  </div>
+  <div class="">
+    <div class="text_prev_container">
+      {{#each post in loadPosts}}
+        {{>postPrev post}}
+      {{/each}}
+    </div>
+    <div class="">
+    </div>
   </div>
   {{#if isInRole 'admin'}}
     <button class="create_Post">Neues Post erstellen</button>
