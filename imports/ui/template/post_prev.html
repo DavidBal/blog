@@ -15,15 +15,25 @@
 
 <template name="highlightUi">
   <div class="highlightContainer">
-    <div id="highlight_1" class="highlight">
-      Text 1
+    <div class="highlightImage">
+      <div class="highlightImage_holder">
+      </div>
+      <div class="highlightImage_share">
+        share
+      </div>
     </div>
-    <div id="highlight_2" class="highlight" style="display: none">
-      Text 2
+  </div>
+</template>
+
+<template name="ImagePrev">
+  <div id="{{_id}}" class="imagePrev" >
+    <div class="image_container" style="background-image: url({{url}})">
+
     </div>
-    <div id="highlight_3" class="highlight" style="display: none">
-      Text 3
+    <div id="{{url}}" class="image_prev_share">
+      share
     </div>
-    <button class="before">Before</button><button class="next">Next</button>
+    <div>
+    </div>
   </div>
 </template>

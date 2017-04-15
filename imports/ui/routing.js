@@ -6,7 +6,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { PostCollection } from '../api/database.js';
 
 function databaseSubscribe() {
-  return Meteor.subscribe('postCollection') && Meteor.subscribe('tagCollection');
+  return Meteor.subscribe('postCollection') && Meteor.subscribe('tagCollection') && Meteor.subscribe('imageCollection');
 }
 
 const filters = {
@@ -42,7 +42,7 @@ if (Meteor.isClient) {
 
     action() {
       this.layout('containerMain');
-      this.render('text_prevLoader', { to: 'content' });
+      this.render('ImagePrevContainer', { to: 'content' });
       this.render('', { to: 'footer' });
       this.render('highlightUi', { to: 'highlights' });
     },
@@ -81,6 +81,20 @@ if (Meteor.isClient) {
     },
   });
 
+  Router.route('/post', {
+    loadingTemplate: 'Loading',
+
+    before: filters.authenticate,
+
+    waitOn() {
+      return databaseSubscribe();
+    },
+
+    action() {
+      this.render('postAImage');
+    },
+  });
+
   Router.route('/editor/:_id', {
     loadingTemplate: 'Loading',
 
@@ -107,6 +121,8 @@ if (Meteor.isClient) {
       this.render('login');
     },
   });
+
+
 }
 
 

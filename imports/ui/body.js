@@ -4,7 +4,7 @@ import { Router } from 'meteor/iron:router';
 import { Accounts } from 'meteor/accounts-base';
 import { $ } from 'meteor/jquery';
 
-import { PostCollection } from '../api/database.js';
+import { PostCollection, ImageCollection } from '../api/database.js';
 
 import './routing.js';
 import './template/editor.js';
@@ -18,6 +18,7 @@ import './template/tag.html';
 
 
 let slideIndex = 1;
+let counter = 4;
 
 function showDivs(n) {
   let i;
@@ -40,9 +41,31 @@ function plusDivs(n) {
 
 if (Meteor.isClient) {
   // Template helper
-  Template.textPrevLoader.helpers({
+  Template.imagePrevContainer.helpers({
     loadPosts() {
-      return PostCollection.find({}, { sort: { date: -1 } });
+      console.log('Helper Called');
+      const result = ImageCollection.find({}, { sort: { date: -1 }, limit: 4 });
+      console.log(result);
+      return result;
+    },
+  });
+
+  Template.imagePrevContainer_afterLoad.helpers({
+    loadPosts() {
+      console.log('Helper Called' + counter);
+      const result = ImageCollection.find({}, {
+        sort: { date: -1 },
+        skip: counter,
+        limit: 4 });
+      console.log(result);
+      counter += 4;
+      return result;
+    },
+  });
+
+  Template.imagePrevContainer.events({
+    'click .loadmore': function onClick() {
+      Blaze.render(Template.imagePrevContainer_afterLoad, $('.imagePrevContainer').get(0));
     },
   });
 

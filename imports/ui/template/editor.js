@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Router } from 'meteor/iron:router';
 import { $ } from 'meteor/jquery';
 
-import { PostCollection, TagCollection } from '/imports/api/database.js';
+import { PostCollection, ImageCollection, TagCollection } from '/imports/api/database.js';
 
 import './editor.html';
 
@@ -62,6 +62,14 @@ if (Meteor.isClient) {
         PostCollection.remove(event.currentTarget.id);
         Router.go('/');
       }
+    },
+  });
+
+  Template.postAImage.events({
+    'click .save': function onClick() {
+      const url = $('#image_link').val();
+      const date = new Date().toISOString();
+      ImageCollection.insert({ url, date });
     },
   });
 }
