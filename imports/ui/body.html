@@ -12,6 +12,8 @@
 
     {{> menu}}
 
+    {{> newsTicker}}
+
     <highlights>
       {{> yield "highlights"}}
     </highlights>
@@ -28,48 +30,9 @@
 
     {{> down}}
   </div>
-</template>
-
-<template name="textPrevLoader">
-  <div class="underTitel">
-    <div class="underTitelContent">News</div>
-  </div>
-  <div class="">
-    <div class="text_prev_container">
-      {{#each post in loadPosts}}
-        {{>postPrev post}}
-      {{/each}}
-    </div>
-    <div class="">
-    </div>
-  </div>
   {{#if isInRole 'admin'}}
-    <button class="create_Post">Neues Post erstellen</button>
+    {{> fastPostImageButton}}
   {{/if}}
-</template>
-
-<template name="imagePrevContainer_afterLoad">
-  <div class="imagePrevContainer_ul">
-    {{#each post in loadPosts}}
-      {{>ImagePrev post}}
-    {{/each}}
-  </div>
-</template>
-
-<template name="imagePrevContainer">
-  <div class="underTitel">
-    <div class="underTitelContent">Neusten:</div>
-  </div>
-  <div class="imagePrevContainer">
-    <div class="imagePrevContainer_ul">
-      {{#each post in loadPosts}}
-        {{>ImagePrev post}}
-      {{/each}}
-    </div>
-  </div>
-  <div style="text-align: center">
-    <button class="loadmore">ladeMehr</button>
-  </div>
 </template>
 
 <template name="404">
@@ -99,5 +62,11 @@
     <span class="toot-table"><a href="/impressum">Impressum</a></span>
     <br/>
     <span class="toot-table"><a href="https://github.com/DavidBal/blog"><img src="/GitHub-Mark-32px.png"></a></span>
+  </div>
+</template>
+
+<template name="newsTicker">
+  <div class="newsTickerContainer">
+    //
   </div>
 </template>

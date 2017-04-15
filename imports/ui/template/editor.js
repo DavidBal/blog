@@ -3,19 +3,20 @@ import { Meteor } from 'meteor/meteor';
 import { Router } from 'meteor/iron:router';
 import { $ } from 'meteor/jquery';
 
-import { PostCollection, ImageCollection, TagCollection } from '/imports/api/database.js';
+import { PostCollection, ImageCollection } from '/imports/api/database.js';
 
 import './editor.html';
 
-function addTags(tagString) {
-  let tag = TagCollection.findOne({ mainTag: tagString });
+/* unused
+  function addTags(tagString) {
+    let tag = TagCollection.findOne({ mainTag: tagString });
 
-  if (typeof tag === 'undefined') {
-    tag = TagCollection.findOne({ altTags: tagString });
+    if (typeof tag === 'undefined') {
+      tag = TagCollection.findOne({ altTags: tagString });
+    }
+    return tag.mainTag;
   }
-  return tag.mainTag;
-}
-
+*/
 if (Meteor.isClient) {
   Template.editor.helpers({
     textformater(text) {

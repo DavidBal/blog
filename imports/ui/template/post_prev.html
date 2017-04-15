@@ -1,3 +1,45 @@
+<template name="textPrevLoader">
+  <div class="underTitel">
+    <div class="underTitelContent">News</div>
+  </div>
+  <div class="">
+    <div class="text_prev_container">
+      {{#each post in loadPosts}}
+        {{>postPrev post}}
+      {{/each}}
+    </div>
+    <div class="">
+    </div>
+  </div>
+  {{#if isInRole 'admin'}}
+    <button class="create_Post">Neues Post erstellen</button>
+  {{/if}}
+</template>
+
+<template name="imagePrevContainerAfterLoad">
+  <div class="imagePrevContainer_ul">
+    {{#each post in loadPosts}}
+      {{>imagePrev post}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="imagePrevContainer">
+  <div class="underTitel">
+    <div class="underTitelContent">Neusten</div>
+  </div>
+  <div class="imagePrevContainer">
+    <div class="imagePrevContainer_ul">
+      {{#each post in loadPosts}}
+        {{>imagePrev post}}
+      {{/each}}
+    </div>
+  </div>
+  <div style="text-align: center">
+    <button class="loadmore">ladeMehr</button>
+  </div>
+</template>
+
 <template name="postPrev">
   <a class="afree" href="/artikel/{{_id}}">
     <div class="postPrev" id="{{_id}}" title="Oeffne artikel" >
@@ -16,7 +58,9 @@
 <template name="highlightUi">
   <div class="highlightContainer">
     <div class="highlightImage">
-      <div class="highlightImage_holder">
+      <div id="highlightImage_holder" class="highlightImage_holder">
+        <div id="highlightImage_holder_back" class="highlightImage_holder_back">
+        </div>
       </div>
       <div class="highlightImage_share">
         share
@@ -25,7 +69,7 @@
   </div>
 </template>
 
-<template name="ImagePrev">
+<template name="imagePrev">
   <div id="{{_id}}" class="imagePrev" >
     <div class="image_container" style="background-image: url({{url}})">
 
@@ -33,7 +77,8 @@
     <div id="{{url}}" class="image_prev_share">
       share
     </div>
-    <div>
+    <div class="postPrevImage_Date">
+      {{dateHelper}}
     </div>
   </div>
 </template>
