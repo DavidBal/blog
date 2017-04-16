@@ -45,6 +45,7 @@ textarea{
   background-color: rgba(0,0,0,0.001);
   padding-bottom: 10px;
   padding-top: 10px;
+  max-width: 1140px;
 }
 
 .website-title{
@@ -76,6 +77,7 @@ textarea{
   color: white;
   margin-bottom: 20px;
   border-radius: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.9);
 }
 
 .MenueContainer::after{

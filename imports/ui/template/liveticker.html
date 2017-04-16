@@ -1,0 +1,16 @@
+<template name="liveTicker">
+  <div class="liveTickerContainer">
+    <div class="liveTickerTitel">
+      News Ticker
+    </div>
+    <div class="liveTickerContent">
+      {{#each news in liveNewsLoader}}
+        {{> liveNews news}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name="liveNews">
+  <div class="liveNews">{{url}}</div>
+</template>

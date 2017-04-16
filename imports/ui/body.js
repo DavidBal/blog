@@ -9,6 +9,7 @@ import { PostCollection, ImageCollection } from '../api/database.js';
 import './routing.js';
 import './template/editor.js';
 import './template/post_prev.js';
+import './template/liveticker.js';
 
 import './body.html';
 import './template/post_prev.html';

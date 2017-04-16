@@ -8,7 +8,7 @@ import { PostCollection } from '../api/database.js';
 import './body.html';
 
 function databaseSubscribe() {
-  return Meteor.subscribe('postCollection') && Meteor.subscribe('tagCollection') && Meteor.subscribe('imageCollection');
+  return Meteor.subscribe('postCollection') && Meteor.subscribe('tagCollection') && Meteor.subscribe('imageCollection') && Meteor.subscribe('liveNewsCollection');
 }
 
 const filters = {
@@ -121,8 +121,6 @@ if (Meteor.isClient) {
       this.render('login');
     },
   });
-
-
 }
 
 
