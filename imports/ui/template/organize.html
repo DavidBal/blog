@@ -1,0 +1,34 @@
+<template name="organize">
+  <div>
+    {{> orgaLiveTicker}}
+    <br/>
+    <hr/>
+    {{> postAImage}}
+  </div>
+</template>
+
+<template name="orgaLiveTicker">
+  <div>Live Ticker Content:</div>
+  <table>
+    <tr>
+      <th><span class="tableContent">Text</span></th>
+      <th><span class="tableContent">date</span></th>
+      <th><span class="tableContent">Delete?</span></th>
+    </tr>
+    {{#each liveNews in loadLiveNews}}
+      {{> liveNewsRow liveNews}}
+    {{/each}}
+    <tr>
+      <td><input id="addNewsText"></td>
+      <td><a href=""><span class="tableContent addNews">Add</span></a></td>
+    </tr>
+  </table>
+</template>
+
+<template name="liveNewsRow">
+  <tr>
+    <td><span class="tableContent">{{text}}</span></td>
+    <td><span class="tableContent">{{dateHelper}}</span></td>
+    <td><a href=""><span id="{{_id}}" class="tableContent deleteNews">Delete</span></a></td>
+  </tr>
+</template>

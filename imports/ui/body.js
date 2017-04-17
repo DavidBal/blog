@@ -10,6 +10,7 @@ import './routing.js';
 import './template/editor.js';
 import './template/post_prev.js';
 import './template/liveticker.js';
+import './template/organize.js';
 
 import './body.html';
 import './template/post_prev.html';

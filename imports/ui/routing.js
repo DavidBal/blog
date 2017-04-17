@@ -121,6 +121,15 @@ if (Meteor.isClient) {
       this.render('login');
     },
   });
+
+  Router.route('/organize', {
+    waitOn() {
+      return databaseSubscribe();
+    },
+    action() {
+      this.render('organize');
+    },
+  });
 }
 
 

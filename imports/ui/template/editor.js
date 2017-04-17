@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Router } from 'meteor/iron:router';
 import { $ } from 'meteor/jquery';
 
-import { PostCollection, ImageCollection, LiveNewsCollection } from '/imports/api/database.js';
+import { PostCollection, ImageCollection } from '/imports/api/database.js';
 
 import './editor.html';
 
@@ -70,7 +70,7 @@ if (Meteor.isClient) {
     'click .save': function onClick() {
       const url = $('#image_link').val();
       const date = new Date().toISOString();
-      LiveNewsCollection.insert({ url, date });
+      ImageCollection.insert({ url, date });
     },
   });
 }
