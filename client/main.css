@@ -3,8 +3,7 @@
 */
 
 body{
-  display: flex;
-  font-family: monospace;
+  font-family: Futura;
   height: 100%;
   font-size: 16px;
   padding-bottom: 20px;
@@ -109,13 +108,6 @@ textarea{
   margin-top: 20px;
 }
 
-.image_holder{
-  width: 800px;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
 .post_Header{
   font-size: 20px;
   font-style: italic;
@@ -131,12 +123,6 @@ textarea{
 .post_Date{
   font-size: 15px;
   text-align: right;
-}
-
-.imagePrevContainer_ul{
-  display: flex;
-  align-items: center;
-
 }
 
 .login_table{

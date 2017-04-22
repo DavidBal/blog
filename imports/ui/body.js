@@ -4,9 +4,8 @@ import { Router } from 'meteor/iron:router';
 import { Accounts } from 'meteor/accounts-base';
 import { $ } from 'meteor/jquery';
 
-import { PostCollection, ImageCollection } from '../api/database.js';
-
 import './routing.js';
+import './seoManager.js';
 import './template/editor.js';
 import './template/post_prev.js';
 import './template/liveticker.js';

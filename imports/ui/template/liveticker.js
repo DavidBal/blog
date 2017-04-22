@@ -3,8 +3,14 @@ import { Meteor } from 'meteor/meteor';
 import { $ } from 'meteor/jquery';
 import { LiveNewsCollection } from '/imports/api/database.js';
 
+/**
+  TODO: Change to runing
+*/
+
 
 import './liveticker.html';
+
+let margin = 0;
 
 let cycelPos = 0;
 
@@ -27,6 +33,29 @@ Template.liveTicker.helpers({
     return LiveNewsCollection.find({});
   },
 });
+
+Template.liveTickerFloat.helpers({
+  liveNewsLoader() {
+    return LiveNewsCollection.find({});
+  },
+});
+
+function cycelLiveNewsFloating(){
+  $('#liveTickerFloater1').css({ 'margin-left': margin -= 1 });
+  const r = parseInt($('#liveTickerFloater1').css('width'), 10);
+  // console.log(margin + ' <= ' + r);
+  if (r <= margin * -1) {
+    // console.log('Hit');
+    margin = r;
+  }
+}
+
+Template.liveTickerFloat.onRendered(
+  function () {
+    Meteor.setInterval(function () {
+      cycelLiveNewsFloating();
+    }, 33.33);
+  });
 
 Template.liveTicker.onRendered(
   function () {

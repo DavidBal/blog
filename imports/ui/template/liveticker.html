@@ -14,3 +14,22 @@
 <template name="liveNews">
   <div class="liveNews">{{text}}</div>
 </template>
+
+<template name="liveTickerFloat">
+  <div class="liveTickerContainer">
+    <div class="liveTickerTitel">
+      News Ticker
+    </div>
+    <div class="liveTickerContentFloat" id="liveTickerContentFloat">
+      <span id="liveTickerFloater1" class="liveTickerFloater">
+        {{#each news in liveNewsLoader}}
+          {{> liveNewsFloat news}}
+        {{/each}}
+      </span>
+    </div>
+  </div>
+</template>
+
+  <template name="liveNewsFloat">
+    <span class="liveNews">{{text}}</span>
+  </template>

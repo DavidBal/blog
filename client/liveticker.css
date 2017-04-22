@@ -15,8 +15,18 @@
   padding-left: 1.875rem;
   padding-right: 1.875rem;
   font-size: 25px;
-  font-family: monospace;
   box-shadow: 0 1px 3px rgba(0,0,0,.9);
+}
+
+.liveTickerContentFloat{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.liveTickerFloater{
+  color: grey;
+  white-space: nowrap;
 }
 
 .liveTickerContent{
@@ -27,7 +37,6 @@
 }
 
 .liveNews{
-  display: none;
 }
 
 .liveNews::before{

@@ -6,6 +6,9 @@ import { Roles } from 'meteor/alanning:roles';
 import { PostCollection } from '../api/database.js';
 
 import './body.html';
+import './template/liveticker.html';
+import './template/post_prev.html';
+import './template/organize.html';
 
 function databaseSubscribe() {
   return Meteor.subscribe('postCollection') && Meteor.subscribe('tagCollection') && Meteor.subscribe('imageCollection') && Meteor.subscribe('liveNewsCollection');
@@ -42,13 +45,29 @@ if (Meteor.isClient) {
       return databaseSubscribe();
     },
 
+    /*onAfterAction() {
+      if (!Meteor.isClient) {
+        return;
+      }
+      SEO.set({
+        title: 'Die3Affen',
+        meta: {
+          description: 'Text',
+        },
+        og: {
+          title: 'Die3Affen',
+          description: 'Text',
+        },
+      });
+    },*/
+
     action() {
       this.layout('containerMain');
       this.render('imagePrevContainer', { to: 'content' });
       this.render('', { to: 'footer' });
       this.render('highlightUi', { to: 'highlights' });
     },
-  });
+  }, { name: 'home' });
 
   Router.route('/artikel/:_id', {
     loadingTemplate: 'Loading',

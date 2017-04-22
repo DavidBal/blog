@@ -3,7 +3,7 @@
     {{> orgaLiveTicker}}
     <br/>
     <hr/>
-    {{> postAImage}}
+    {{> orgaImagePosts}}
   </div>
 </template>
 
@@ -28,6 +28,32 @@
 <template name="liveNewsRow">
   <tr>
     <td><span class="tableContent">{{text}}</span></td>
+    <td><span class="tableContent">{{dateHelper}}</span></td>
+    <td><a href=""><span id="{{_id}}" class="tableContent deleteNews">Delete</span></a></td>
+  </tr>
+</template>
+
+<template name="orgaImagePosts">
+  <div>images urls:</div>
+  <table style="max-width: 1000px;">
+    <tr>
+      <th><span class="tableContent">url</span></th>
+      <th><span class="tableContent">date</span></th>
+      <th><span class="tableContent">delete?</span></th>
+    </tr>
+    {{#each image in imageLoader}}
+      {{> imageRow image}}
+    {{/each}}
+    <tr>
+      <td><textarea id="addImage" cols="100" rows="1" style="resize: none"></textarea></td>
+      <td><a href=""><span class="tableContent save">Add</span></a></td>
+    </tr>
+  </table>
+</template>
+
+<template name="imageRow">
+  <tr>
+    <td><span class="tableContent">{{url}}</span></td>
     <td><span class="tableContent">{{dateHelper}}</span></td>
     <td><a href=""><span id="{{_id}}" class="tableContent deleteNews">Delete</span></a></td>
   </tr>

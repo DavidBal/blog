@@ -22,3 +22,8 @@ iron:router
 accounts-ui@1.1.9
 accounts-password@1.3.5
 alanning:roles
+spiderable
+gadicohen:phantomjs
+manuelschoebel:ms-seo
+check
+ejson

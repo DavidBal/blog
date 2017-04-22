@@ -9,6 +9,8 @@ import './post_prev.html';
 let slideIndex = 0;
 let counter = 4;
 
+const rowSize = 6;
+
 function renderHiglightPrev() {
   let dom = $('.imagePrev').get(slideIndex);
   let domNext = $('.imagePrev').get(slideIndex + 1);
@@ -34,7 +36,7 @@ function renderHiglightPrev() {
 if (Meteor.isClient) {
   Template.imagePrevContainer.helpers({
     loadPosts() {
-      const result = ImageCollection.find({}, { sort: { date: -1 }, limit: 4 });
+      const result = ImageCollection.find({}, { sort: { date: -1 }, limit: rowSize });
       return result;
     },
   });
@@ -44,8 +46,8 @@ if (Meteor.isClient) {
       const result = ImageCollection.find({}, {
         sort: { date: -1 },
         skip: counter,
-        limit: 4 });
-      counter += 4;
+        limit: rowSize });
+      counter += rowSize;
       return result;
     },
   });
@@ -59,7 +61,9 @@ if (Meteor.isClient) {
 
   Template.imagePrevContainer.events({
     'click .loadmore': function onClick() {
-      Blaze.render(Template.imagePrevContainer_afterLoad, $('.imagePrevContainer').get(0));
+      if (counter < ImageCollection.find({}).fetch().length) {
+        Blaze.render(Template.imagePrevContainerAfterLoad, $('.imagePrevContainer').get(0));
+      }
     },
   });
 
