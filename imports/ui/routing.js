@@ -2,7 +2,7 @@
 import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { $ } from 'meteor/jquery';
+// import { $ } from 'meteor/jquery';
 
 import { PostCollection, ImageCollection } from '../api/database.js';
 
@@ -170,13 +170,27 @@ if (Meteor.isClient) {
     waitOn() {
       return Meteor.subscribe('imageCollection');
     },
+    data() {
+      const img = ImageCollection.findOne(this.params._id);
+      return { img };
+    },
     onAfterAction() {
-      $('head').append(createMetaTags(this.params._id));
+      const img = this.data().img;
+      SEO.set({
+        og: {
+          title: img._id,
+          image: img.url,
+          // 'image:type': ,
+          'image:url': img.url,
+          'image:width': 300,
+          'image:height': 300,
+        },
+      });
     },
     action() {
       this.render('body');
     },
-  }, { where: 'server' });
+  });
 }
 
 
