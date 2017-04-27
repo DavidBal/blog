@@ -176,7 +176,7 @@ if (Meteor.isClient) {
     action() {
       this.render('body');
     },
-  });
+  }, { where: 'server' });
 }
 
 
