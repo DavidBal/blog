@@ -18,8 +18,10 @@ function databaseSubscribe() {
 function createMetaTags(id) {
   const image = ImageCollection.findOne(id);
   let meta = '<meta property="og:type" content="article">';
-  meta += `<meta property="og:title" content="${id}">`;
+  // meta += `<meta property="og:title" content="${id}">`;
   meta += `<meta property="og:image" content="${image.url}">`;
+  meta += '<meta property="og:image:width" content="300">';
+  meta += '<meta property="og:image:height" content="300">';
 
   console.log(meta);
   return meta;
