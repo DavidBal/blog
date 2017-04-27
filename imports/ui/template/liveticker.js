@@ -40,7 +40,7 @@ Template.liveTickerFloat.helpers({
   },
 });
 
-function cycelLiveNewsFloating(){
+function cycelLiveNewsFloating() {
   $('#liveTickerFloater1').css({ 'margin-left': margin -= 1 });
   const r = parseInt($('#liveTickerFloater1').css('width'), 10);
   // console.log(margin + ' <= ' + r);

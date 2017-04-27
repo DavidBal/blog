@@ -2,8 +2,9 @@
 import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { $ } from 'meteor/jquery';
 
-import { PostCollection } from '../api/database.js';
+import { PostCollection, ImageCollection } from '../api/database.js';
 
 import './body.html';
 import './template/liveticker.html';
@@ -12,6 +13,16 @@ import './template/organize.html';
 
 function databaseSubscribe() {
   return Meteor.subscribe('postCollection') && Meteor.subscribe('tagCollection') && Meteor.subscribe('imageCollection') && Meteor.subscribe('liveNewsCollection');
+}
+
+function createMetaTags(id) {
+  const image = ImageCollection.findOne(id);
+  let meta = '<meta property="og:type" content="article">';
+  meta += `<meta property="og:title" content="${id}">`;
+  meta += `<meta property="og:image" content="${image.url}">`;
+
+  console.log(meta);
+  return meta;
 }
 
 const filters = {
@@ -147,6 +158,20 @@ if (Meteor.isClient) {
     },
     action() {
       this.render('organize');
+    },
+  });
+
+  Router.route('/imgshare/:_id', {
+    name: 'imgshare',
+
+    waitOn() {
+      return Meteor.subscribe('imageCollection');
+    },
+    onAfterAction() {
+      $('head').append(createMetaTags(this.params._id));
+    },
+    action() {
+      this.render('body');
     },
   });
 }

@@ -1,48 +1,47 @@
-.liveTickerContainer{
+.liveTickerContainer {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
   margin-top: 30px;
   border-bottom: solid 2px black;
   color: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,.9);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .9);
 }
 
-.liveTickerTitel{
+.liveTickerTitel {
   white-space: nowrap;
   background-color: black;
   color: white;
   padding-left: 1.875rem;
   padding-right: 1.875rem;
   font-size: 25px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.9);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .9);
 }
 
-.liveTickerContentFloat{
+.liveTickerContentFloat {
   display: flex;
   align-items: center;
   overflow: hidden;
 }
 
-.liveTickerFloater{
+.liveTickerFloater {
   color: grey;
   white-space: nowrap;
 }
 
-.liveTickerContent{
+.liveTickerContent {
   color: black;
   overflow: hidden;
   white-space: nowrap;
   margin: 0px 20px 0px 20px;
 }
 
-.liveNews{
-}
+.liveNews {}
 
-.liveNews::before{
+.liveNews::before {
   content: ' +++ '
 }
 
-.liveNews::after{
+.liveNews::after {
   content: ' +++ '
 }
