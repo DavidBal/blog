@@ -182,6 +182,8 @@ if (Meteor.isClient) {
           image: img.url,
           // 'image:type': 'article',
           'image:url': img.url,
+          'image:width': 200,
+          'image:height': 200,
         },
       });
     },
