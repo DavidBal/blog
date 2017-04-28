@@ -180,10 +180,8 @@ if (Meteor.isClient) {
         og: {
           title: img._id,
           image: img.url,
-          'image:type': 'article',
+          // 'image:type': 'article',
           'image:url': img.url,
-          'image:width': 600,
-          'image:height': 600,
         },
       });
     },
